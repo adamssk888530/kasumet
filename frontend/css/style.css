@@ -459,3 +459,31 @@ footer {
         gap: 8px;
     }
 }
+/* =========================
+   REGISTER LINK
+========================= */
+
+.register-link {
+    display: inline-block;
+
+    padding: 14px 22px;
+
+    border-radius: 10px;
+
+    background: var(--green);
+
+    color: #041008;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: 0.25s;
+}
+
+.register-link:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 30px rgba(40, 227, 107, 0.15);
+}
