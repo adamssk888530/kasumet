@@ -1,0 +1,461 @@
+/* =========================
+   KASUMET V1
+   Main Styles
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #07100b;
+    --bg-light: #0d1811;
+    --card: #111d15;
+    --card-hover: #16251a;
+
+    --green: #28e36b;
+    --green-dark: #16a34a;
+
+    --white: #ffffff;
+    --text: #e9f2ec;
+    --muted: #9eafa3;
+
+    --border: #26382c;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    width: 100%;
+    min-height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    background: rgba(7, 16, 11, 0.96);
+
+    border-bottom: 1px solid var(--border);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+}
+
+
+/* LOGO */
+
+.logo {
+    color: var(--green);
+
+    font-size: 25px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+.logo span {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    margin-top: 3px;
+}
+
+
+/* NAVIGATION */
+
+.navigation {
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+}
+
+.navigation a {
+    color: var(--text);
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.navigation a:hover {
+    color: var(--green);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 620px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(40, 227, 107, 0.12),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #07100b,
+            #0b1910,
+            #07100b
+        );
+}
+
+
+/* Background glow */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: rgba(40, 227, 107, 0.05);
+
+    filter: blur(80px);
+}
+
+
+/* HERO CONTENT */
+
+.hero-content {
+    position: relative;
+
+    max-width: 800px;
+
+    z-index: 2;
+}
+
+.welcome {
+    color: var(--green);
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 10vw, 110px);
+
+    line-height: 1;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    color: var(--white);
+}
+
+.subtitle {
+    color: var(--green);
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    margin-top: 12px;
+}
+
+.description {
+    max-width: 600px;
+
+    margin: 22px auto;
+
+    color: var(--muted);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 30px;
+
+    flex-wrap: wrap;
+}
+
+.buttons button,
+.account-card button {
+    border: none;
+
+    cursor: pointer;
+
+    padding: 14px 22px;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+
+    transition: 0.25s;
+}
+
+.buttons button:first-child {
+    background: var(--green);
+
+    color: #041008;
+}
+
+.buttons button:last-child {
+    background: transparent;
+
+    color: var(--white);
+
+    border: 1px solid var(--green);
+}
+
+.buttons button:hover,
+.account-card button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 30px rgba(40, 227, 107, 0.15);
+}
+
+
+/* =========================
+   ACCOUNT SECTION
+========================= */
+
+.account-section {
+    padding: 80px 6%;
+
+    text-align: center;
+
+    background: var(--bg-light);
+}
+
+.account-section h2 {
+    font-size: 34px;
+
+    margin-bottom: 10px;
+}
+
+.account-section > p {
+    color: var(--muted);
+
+    margin-bottom: 40px;
+}
+
+
+/* CARDS */
+
+.account-cards {
+    max-width: 900px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 25px;
+}
+
+.account-card {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 35px 25px;
+
+    transition: 0.25s;
+}
+
+.account-card:hover {
+    background: var(--card-hover);
+
+    transform: translateY(-5px);
+
+    border-color: var(--green);
+}
+
+.icon {
+    font-size: 45px;
+
+    margin-bottom: 18px;
+}
+
+.account-card h3 {
+    font-size: 24px;
+
+    margin-bottom: 12px;
+}
+
+.account-card p {
+    color: var(--muted);
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+}
+
+.account-card button {
+    background: var(--green);
+
+    color: #041008;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 25px;
+
+    text-align: center;
+
+    background: #050b07;
+
+    border-top: 1px solid var(--border);
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .header {
+        padding: 15px 20px;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    .navigation {
+        gap: 12px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .navigation a {
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: 550px;
+
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        font-size: 60px;
+    }
+
+    .subtitle {
+        font-size: 20px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    .account-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .account-section {
+        padding: 60px 20px;
+    }
+}
+
+
+/* Small phones */
+
+@media (max-width: 450px) {
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .welcome {
+        font-size: 11px;
+
+        letter-spacing: 3px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .buttons button {
+        width: 100%;
+    }
+
+    .navigation {
+        gap: 8px;
+    }
+}
