@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -10,145 +12,273 @@
 
     <title>KASUMET — Virtual Market</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
 </head>
 
+
 <body>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
 
     <header class="header">
 
         <div class="logo">
+
             KASUMET
-            <span>VIRTUAL MARKET</span>
+
+            <span>
+                VIRTUAL MARKET
+            </span>
+
         </div>
 
+
         <nav class="navigation">
-            <a href="#">Home</a>
-            <a href="#">Explore Market</a>
-            <a href="#">Categories</a>
-            <a href="#">Deals</a>
-            <a href="#">Login</a>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="#">
+                Explore Market
+            </a>
+
+            <a href="#">
+                Categories
+            </a>
+
+            <a href="#">
+                Deals
+            </a>
+
+            <!-- REAL LOGIN LINK -->
+
+            <a href="login.html">
+                Login
+            </a>
+
         </nav>
 
     </header>
 
 
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
     <main>
+
+
+        <!-- =========================
+             HERO SECTION
+        ========================== -->
 
         <section class="hero">
 
             <div class="hero-content">
 
+
                 <p class="welcome">
                     WELCOME TO
                 </p>
+
 
                 <h1>
                     KASUMET
                 </h1>
 
+
                 <p class="subtitle">
                     Virtual Market
                 </p>
 
+
                 <p class="description">
-                    Discover shops, products and businesses
-                    in one virtual marketplace.
+
+                    Discover shops, products and
+                    businesses in one virtual marketplace.
+
                 </p>
+
+
+
+                <!-- =========================
+                     MAIN ACCOUNT BUTTONS
+                ========================== -->
 
                 <div class="buttons">
 
-                    <a
-    href="register.html"
-    class="register-link"
-    id="buyerRegisterBtn"
->
-    Register as Buyer
-</a>
 
-                    <button id="sellerRegisterBtn">
+                    <!-- BUYER REGISTER -->
+
+                    <a
+                        href="register.html"
+                        class="register-link"
+                        id="buyerRegisterBtn"
+                    >
+                        Register as Buyer
+                    </a>
+
+
+
+                    <!-- SELLER REGISTER -->
+
+                    <button
+                        id="sellerRegisterBtn"
+                        type="button"
+                    >
                         Register as Seller
                     </button>
 
+
                 </div>
+
 
             </div>
 
         </section>
 
 
+
+        <!-- =========================
+             ACCOUNT SECTION
+        ========================== -->
+
         <section class="account-section">
+
 
             <h2>
                 Join Kasumet
             </h2>
 
+
             <p>
                 Choose how you want to use Kasumet.
             </p>
 
+
+
             <div class="account-cards">
 
+
+                <!-- =========================
+                     BUYER CARD
+                ========================== -->
+
                 <div class="account-card">
+
 
                     <div class="icon">
                         👤
                     </div>
 
+
                     <h3>
                         Buyer
                     </h3>
 
+
                     <p>
+
                         Find shops, discover products
                         and connect with sellers.
+
                     </p>
 
-                    <button>
+
+                    <!-- BUYER ACCOUNT LINK -->
+
+                    <a
+                        href="register.html"
+                        class="register-link"
+                    >
                         Create Buyer Account
-                    </button>
+                    </a>
+
 
                 </div>
 
 
+
+                <!-- =========================
+                     SELLER CARD
+                ========================== -->
+
                 <div class="account-card">
+
 
                     <div class="icon">
                         🏪
                     </div>
 
+
                     <h3>
                         Seller
                     </h3>
 
+
                     <p>
+
                         Create your shop, list products
                         and reach customers.
+
                     </p>
 
-                    <button>
+
+                    <!-- SELLER BUTTON -->
+
+                    <button
+                        id="sellerRegisterBtnCard"
+                        type="button"
+                    >
                         Become a Seller
                     </button>
 
+
                 </div>
+
 
             </div>
 
+
         </section>
+
 
     </main>
 
 
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
     <footer>
+
 
         <p>
             © 2026 KASUMET — Virtual Market
         </p>
 
+
     </footer>
 
 
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
     <script src="js/app.js"></script>
 
+
 </body>
+
 </html>
