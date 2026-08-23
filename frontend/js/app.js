@@ -1,58 +1,10 @@
-// ===============================
-// KASUMET V1
-// Main JavaScript
-// ===============================
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    // ===============================
-    // BUYER REGISTER BUTTON
-    // ===============================
-
-    const buyerRegisterBtn =
-        document.getElementById("buyerRegisterBtn");
-
-    if (buyerRegisterBtn) {
-
-        buyerRegisterBtn.addEventListener("click", function () {
-
-            alert(
-                "KASUMET BUYER REGISTRATION\n\n" +
-                "Buyer registration page zai zo a mataki na gaba."
-            );
-
-        });
-
-    }
-
-
-    // ===============================
-    // SELLER REGISTER BUTTON
-    // ===============================
-
-    const sellerRegisterBtn =
-        document.getElementById("sellerRegisterBtn");
-
-    if (sellerRegisterBtn) {
-
-        sellerRegisterBtn.addEventListener("click", function () {
-
-            alert(
-                "KASUMET SELLER REGISTRATION\n\n" +
-                "Seller verification system zai zo a mataki na gaba."
-            );
-
-        });
-
-    }
-
-
-    // ===============================
-    // CONSOLE MESSAGE
-    // ===============================
-
-    console.log(
-        "KASUMET V1 loaded successfully."
-    );
-
+document.querySelectorAll(".bottom-nav a").forEach(a=>{
+  a.addEventListener("click",()=>{
+    document.querySelectorAll(".bottom-nav a").forEach(x=>x.classList.remove("active"));
+    a.classList.add("active");
+  });
 });
+document.querySelector(".primary").addEventListener("click",()=>{
+  document.getElementById("market").scrollIntoView({behavior:"smooth"});
+});
+document.getElementById("menuBtn").addEventListener("click",()=>alert("KASUMET menu"));
