@@ -1,39 +1,49 @@
 /* =========================================================
    KASUMET V1
-   3D VIRTUAL MARKET ENGINE
+   3D VIRTUAL MARKET
 ========================================================= */
 
 import * as THREE from
-    "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js";
+    "https://esm.sh/three@0.180.0";
 
 import { OrbitControls } from
-    "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/controls/OrbitControls.js";
+    "https://esm.sh/three@0.180.0/examples/jsm/controls/OrbitControls.js";
 
 
 /* =========================================================
-   START MARKET
+   MARKET CONTAINER
 ========================================================= */
 
-const container = document.getElementById("market3d");
+const container =
+    document.getElementById("market3d");
+
 
 if (!container) {
-    console.error("KASUMET 3D: #market3d not found.");
+
+    console.error(
+        "KASUMET 3D: #market3d not found."
+    );
+
 } else {
+
 
     /* =====================================================
        SCENE
     ===================================================== */
 
-    const scene = new THREE.Scene();
+    const scene =
+        new THREE.Scene();
 
     scene.background =
-        new THREE.Color(0x06100a);
+        new THREE.Color(
+            0x06100a
+        );
 
     scene.fog =
         new THREE.Fog(
             0x06100a,
-            35,
-            180
+            70,
+            190
         );
 
 
@@ -51,9 +61,9 @@ if (!container) {
         );
 
     camera.position.set(
-        35,
-        32,
-        42
+        48,
+        42,
+        55
     );
 
 
@@ -63,9 +73,14 @@ if (!container) {
 
     const renderer =
         new THREE.WebGLRenderer({
+
             antialias: true,
-            powerPreference: "high-performance"
+
+            powerPreference:
+                "high-performance"
+
         });
+
 
     renderer.setPixelRatio(
         Math.min(
@@ -74,17 +89,28 @@ if (!container) {
         )
     );
 
+
     renderer.setSize(
         container.clientWidth,
         container.clientHeight
     );
 
-    renderer.shadowMap.enabled = true;
+
+    renderer.shadowMap.enabled =
+        true;
+
 
     renderer.shadowMap.type =
         THREE.PCFSoftShadowMap;
 
-    container.appendChild(renderer.domElement);
+
+    renderer.outputColorSpace =
+        THREE.SRGBColorSpace;
+
+
+    container.appendChild(
+        renderer.domElement
+    );
 
 
     /* =====================================================
@@ -97,16 +123,24 @@ if (!container) {
             renderer.domElement
         );
 
-    controls.enableDamping = true;
 
-    controls.dampingFactor = 0.06;
+    controls.enableDamping =
+        true;
 
-    controls.minDistance = 15;
+    controls.dampingFactor =
+        0.06;
 
-    controls.maxDistance = 100;
+
+    controls.minDistance =
+        25;
+
+    controls.maxDistance =
+        120;
+
 
     controls.maxPolarAngle =
-        Math.PI / 2.15;
+        Math.PI / 2.25;
+
 
     controls.target.set(
         0,
@@ -116,70 +150,133 @@ if (!container) {
 
 
     /* =====================================================
-       LIGHTING
+       LIGHTS
     ===================================================== */
 
-    const ambientLight =
+    const ambient =
         new THREE.AmbientLight(
             0xffffff,
-            1.4
+            1.5
         );
 
-    scene.add(ambientLight);
-
-
-    const moonLight =
-        new THREE.DirectionalLight(
-            0xffffff,
-            2
-        );
-
-    moonLight.position.set(
-        30,
-        60,
-        20
+    scene.add(
+        ambient
     );
 
-    moonLight.castShadow = true;
 
-    moonLight.shadow.mapSize.width =
+    const sun =
+        new THREE.DirectionalLight(
+            0xffffff,
+            2.2
+        );
+
+
+    sun.position.set(
+        40,
+        80,
+        30
+    );
+
+
+    sun.castShadow =
+        true;
+
+
+    sun.shadow.mapSize.width =
         2048;
 
-    moonLight.shadow.mapSize.height =
+    sun.shadow.mapSize.height =
         2048;
 
-    scene.add(moonLight);
+
+    scene.add(
+        sun
+    );
+
+
+    /* GREEN CITY LIGHT */
+
+    const greenLight =
+        new THREE.PointLight(
+            0x28e36b,
+            4,
+            100
+        );
+
+
+    greenLight.position.set(
+        0,
+        15,
+        0
+    );
+
+
+    scene.add(
+        greenLight
+    );
 
 
     /* =====================================================
-       MARKET GROUND
+       GROUND
     ===================================================== */
-
-    const groundGeometry =
-        new THREE.PlaneGeometry(
-            180,
-            180
-        );
-
-    const groundMaterial =
-        new THREE.MeshStandardMaterial({
-            color: 0x07120b,
-            roughness: 0.85,
-            metalness: 0.05
-        });
 
     const ground =
         new THREE.Mesh(
-            groundGeometry,
-            groundMaterial
+
+            new THREE.PlaneGeometry(
+                180,
+                180
+            ),
+
+            new THREE.MeshStandardMaterial({
+
+                color:
+                    0x07150c,
+
+                roughness:
+                    0.9,
+
+                metalness:
+                    0.05
+
+            })
+
         );
+
 
     ground.rotation.x =
         -Math.PI / 2;
 
-    ground.receiveShadow = true;
 
-    scene.add(ground);
+    ground.receiveShadow =
+        true;
+
+
+    scene.add(
+        ground
+    );
+
+
+    /* =====================================================
+       CITY GRID
+    ===================================================== */
+
+    const grid =
+        new THREE.GridHelper(
+            160,
+            32,
+            0x1d7d42,
+            0x10331d
+        );
+
+
+    grid.position.y =
+        0.03;
+
+
+    scene.add(
+        grid
+    );
 
 
     /* =====================================================
@@ -188,13 +285,27 @@ if (!container) {
 
     const roadMaterial =
         new THREE.MeshStandardMaterial({
-            color: 0x18201c,
-            roughness: 0.8
+
+            color:
+                0x151d18,
+
+            roughness:
+                0.85
+
+        });
+
+
+    const roadLineMaterial =
+        new THREE.MeshBasicMaterial({
+
+            color:
+                0x4e6657
+
         });
 
 
     /* =====================================================
-       ROAD CREATOR
+       ROAD
     ===================================================== */
 
     function createRoad(
@@ -204,28 +315,35 @@ if (!container) {
         z
     ) {
 
-        const geometry =
-            new THREE.BoxGeometry(
-                width,
-                0.12,
-                depth
-            );
-
         const road =
             new THREE.Mesh(
-                geometry,
+
+                new THREE.BoxGeometry(
+                    width,
+                    0.15,
+                    depth
+                ),
+
                 roadMaterial
+
             );
+
 
         road.position.set(
             x,
-            0.06,
+            0.08,
             z
         );
 
-        road.receiveShadow = true;
 
-        scene.add(road);
+        road.receiveShadow =
+            true;
+
+
+        scene.add(
+            road
+        );
+
 
         return road;
     }
@@ -240,6 +358,7 @@ if (!container) {
         0
     );
 
+
     createRoad(
         14,
         180,
@@ -247,172 +366,580 @@ if (!container) {
         0
     );
 
-    createRoad(
-        120,
-        10,
-        0,
-        -42
-    );
 
     createRoad(
-        120,
+        180,
         10,
         0,
-        42
+        -45
+    );
+
+
+    createRoad(
+        180,
+        10,
+        0,
+        45
+    );
+
+
+    createRoad(
+        10,
+        180,
+        -45,
+        0
+    );
+
+
+    createRoad(
+        10,
+        180,
+        45,
+        0
     );
 
 
     /* =====================================================
-       BUILDING MATERIAL
+       ROAD MARKINGS
     ===================================================== */
 
-    const buildingMaterial =
-        new THREE.MeshStandardMaterial({
-            color: 0x17241b,
-            roughness: 0.65,
-            metalness: 0.15
-        });
+    function createRoadLine(
+        x,
+        z,
+        width,
+        depth
+    ) {
+
+        const line =
+            new THREE.Mesh(
+
+                new THREE.BoxGeometry(
+                    width,
+                    0.03,
+                    depth
+                ),
+
+                roadLineMaterial
+
+            );
 
 
-    const roofMaterial =
-        new THREE.MeshStandardMaterial({
-            color: 0x26382b,
-            roughness: 0.55
+        line.position.set(
+            x,
+            0.18,
+            z
+        );
+
+
+        scene.add(
+            line
+        );
+
+    }
+
+
+    for (
+        let i = -80;
+        i <= 80;
+        i += 12
+    ) {
+
+        createRoadLine(
+            i,
+            0,
+            5,
+            0.15
+        );
+
+
+        createRoadLine(
+            i,
+            -45,
+            5,
+            0.15
+        );
+
+
+        createRoadLine(
+            i,
+            45,
+            5,
+            0.15
+        );
+
+
+        createRoadLine(
+            0,
+            i,
+            0.15,
+            5
+        );
+
+    }
+
+
+    /* =====================================================
+       BUILDING MATERIALS
+    ===================================================== */
+
+    function buildingMaterial(
+        color
+    ) {
+
+        return new THREE.MeshStandardMaterial({
+
+            color:
+                color,
+
+            roughness:
+                0.65,
+
+            metalness:
+                0.15
+
         });
+
+    }
+
+
+    /* =====================================================
+       WINDOWS
+    ===================================================== */
+
+    function createWindows(
+        group,
+        width,
+        height,
+        depth
+    ) {
+
+        const windowMaterial =
+            new THREE.MeshStandardMaterial({
+
+                color:
+                    0x153d29,
+
+                emissive:
+                    0x0b6b32,
+
+                emissiveIntensity:
+                    0.35,
+
+                metalness:
+                    0.3,
+
+                roughness:
+                    0.25
+
+            });
+
+
+        const rows =
+            Math.max(
+                1,
+                Math.floor(
+                    height / 3
+                )
+            );
+
+
+        const columns =
+            Math.max(
+                2,
+                Math.floor(
+                    width / 3
+                )
+            );
+
+
+        for (
+            let r = 0;
+            r < rows;
+            r++
+        ) {
+
+            for (
+                let c = 0;
+                c < columns;
+                c++
+            ) {
+
+                const windowMesh =
+                    new THREE.Mesh(
+
+                        new THREE.BoxGeometry(
+                            1.5,
+                            1.2,
+                            0.12
+                        ),
+
+                        windowMaterial
+
+                    );
+
+
+                const gap =
+                    width /
+                    (columns + 1);
+
+
+                windowMesh.position.set(
+
+                    -width / 2 +
+                    gap * (c + 1),
+
+                    2.3 +
+                    r * 2.5,
+
+                    depth / 2 + 0.08
+
+                );
+
+
+                group.add(
+                    windowMesh
+                );
+
+            }
+
+        }
+
+    }
+
+
+    /* =====================================================
+       SHOP SIGN
+    ===================================================== */
+
+    function createTextTexture(
+        text
+    ) {
+
+        const canvas =
+            document.createElement(
+                "canvas"
+            );
+
+
+        canvas.width =
+            1024;
+
+        canvas.height =
+            256;
+
+
+        const ctx =
+            canvas.getContext(
+                "2d"
+            );
+
+
+        ctx.fillStyle =
+            "#07100b";
+
+
+        ctx.fillRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+
+        ctx.fillStyle =
+            "#28e36b";
+
+
+        ctx.font =
+            "bold 82px Arial";
+
+
+        ctx.textAlign =
+            "center";
+
+
+        ctx.textBaseline =
+            "middle";
+
+
+        ctx.fillText(
+            text,
+            canvas.width / 2,
+            canvas.height / 2
+        );
+
+
+        const texture =
+            new THREE.CanvasTexture(
+                canvas
+            );
+
+
+        texture.colorSpace =
+            THREE.SRGBColorSpace;
+
+
+        return texture;
+
+    }
 
 
     /* =====================================================
        SHOP CREATOR
     ===================================================== */
 
+    const shopObjects =
+        [];
+
+
     function createShop(
         name,
         x,
         z,
-        width = 12,
-        depth = 10,
-        height = 8
+        width,
+        depth,
+        height,
+        color = 0x17241b
     ) {
 
         const group =
             new THREE.Group();
 
-        group.name = name;
+
+        group.name =
+            name;
 
 
         /* BUILDING */
 
-        const buildingGeometry =
-            new THREE.BoxGeometry(
-                width,
-                height,
-                depth
-            );
-
         const building =
             new THREE.Mesh(
-                buildingGeometry,
-                buildingMaterial
+
+                new THREE.BoxGeometry(
+                    width,
+                    height,
+                    depth
+                ),
+
+                buildingMaterial(
+                    color
+                )
+
             );
+
 
         building.position.y =
             height / 2;
 
-        building.castShadow = true;
 
-        building.receiveShadow = true;
+        building.castShadow =
+            true;
 
-        group.add(building);
+
+        building.receiveShadow =
+            true;
+
+
+        group.add(
+            building
+        );
 
 
         /* ROOF */
 
-        const roofGeometry =
-            new THREE.BoxGeometry(
-                width + 0.8,
-                0.8,
-                depth + 0.8
-            );
-
         const roof =
             new THREE.Mesh(
-                roofGeometry,
-                roofMaterial
+
+                new THREE.BoxGeometry(
+                    width + 1,
+                    1,
+                    depth + 1
+                ),
+
+                buildingMaterial(
+                    0x26382c
+                )
+
             );
+
 
         roof.position.y =
-            height + 0.4;
-
-        roof.castShadow = true;
-
-        group.add(roof);
+            height + 0.5;
 
 
-        /* SHOP FRONT */
+        roof.castShadow =
+            true;
 
-        const glassMaterial =
-            new THREE.MeshStandardMaterial({
-                color: 0x28e36b,
-                transparent: true,
-                opacity: 0.35,
-                metalness: 0.4,
-                roughness: 0.2
-            });
 
-        const glassGeometry =
-            new THREE.BoxGeometry(
-                width * 0.7,
-                height * 0.45,
-                0.15
-            );
+        group.add(
+            roof
+        );
+
+
+        /* WINDOWS */
+
+        createWindows(
+            group,
+            width,
+            height,
+            depth
+        );
+
+
+        /* GLASS FRONT */
 
         const glass =
             new THREE.Mesh(
-                glassGeometry,
-                glassMaterial
+
+                new THREE.BoxGeometry(
+                    width * 0.72,
+                    height * 0.48,
+                    0.15
+                ),
+
+                new THREE.MeshStandardMaterial({
+
+                    color:
+                        0x1c6940,
+
+                    transparent:
+                        true,
+
+                    opacity:
+                        0.6,
+
+                    metalness:
+                        0.5,
+
+                    roughness:
+                        0.15
+
+                })
+
             );
+
 
         glass.position.set(
+
             0,
-            height * 0.42,
-            depth / 2 + 0.08
+
+            height * 0.4,
+
+            depth / 2 + 0.1
+
         );
 
-        group.add(glass);
+
+        group.add(
+            glass
+        );
 
 
-        /* SHOP SIGN */
+        /* DOOR */
 
-        const signMaterial =
-            new THREE.MeshStandardMaterial({
-                color: 0x28e36b,
-                emissive: 0x28e36b,
-                emissiveIntensity: 0.4
-            });
+        const door =
+            new THREE.Mesh(
 
-        const signGeometry =
-            new THREE.BoxGeometry(
-                width * 0.65,
-                0.8,
-                0.25
+                new THREE.BoxGeometry(
+                    1.8,
+                    height * 0.55,
+                    0.18
+                ),
+
+                new THREE.MeshStandardMaterial({
+
+                    color:
+                        0x06110b,
+
+                    emissive:
+                        0x0b3b20,
+
+                    emissiveIntensity:
+                        0.4
+
+                })
+
             );
+
+
+        door.position.set(
+
+            0,
+
+            height * 0.275,
+
+            depth / 2 + 0.2
+
+        );
+
+
+        group.add(
+            door
+        );
+
+
+        /* SIGN */
 
         const sign =
             new THREE.Mesh(
-                signGeometry,
-                signMaterial
+
+                new THREE.PlaneGeometry(
+                    width * 0.78,
+                    1.8
+                ),
+
+                new THREE.MeshBasicMaterial({
+
+                    map:
+                        createTextTexture(
+                            name
+                        ),
+
+                    transparent:
+                        true
+
+                })
+
             );
 
+
         sign.position.set(
+
             0,
-            height + 1.1,
-            depth / 2
+
+            height + 1.6,
+
+            depth / 2 + 0.2
+
         );
 
-        group.add(sign);
+
+        group.add(
+            sign
+        );
 
 
-        /* POSITION */
+        /* GREEN GLOW */
+
+        const glow =
+            new THREE.PointLight(
+                0x28e36b,
+                1.2,
+                20
+            );
+
+
+        glow.position.set(
+            0,
+            4,
+            depth / 2 + 3
+        );
+
+
+        group.add(
+            glow
+        );
+
 
         group.position.set(
             x,
@@ -421,68 +948,311 @@ if (!container) {
         );
 
 
-        scene.add(group);
+        scene.add(
+            group
+        );
+
+
+        shopObjects.push(
+            group
+        );
+
 
         return group;
+
     }
 
 
     /* =====================================================
-       KASUMET SHOPS
+       MARKET SHOPS
     ===================================================== */
 
     createShop(
-        "Gadget World",
+        "GADGET WORLD",
         -28,
         -28,
-        14,
-        11,
-        9
-    );
-
-    createShop(
-        "Fashion House",
-        28,
-        -28,
-        14,
-        11,
-        9
-    );
-
-    createShop(
-        "Car Empire",
-        -28,
-        28,
-        16,
-        13,
-        8
-    );
-
-    createShop(
-        "Home Comforts",
-        28,
-        28,
         15,
         12,
-        8
+        9,
+        0x14291c
     );
 
-    createShop(
-        "Electronics Mall",
-        0,
-        -58,
-        22,
-        12,
-        10
-    );
 
     createShop(
-        "Food Court",
-        0,
-        58,
-        22,
+        "FASHION HOUSE",
+        28,
+        -28,
+        15,
         12,
-        8
+        9,
+        0x1c241e
+    );
+
+
+    createShop(
+        "CAR EMPIRE",
+        -28,
+        28,
+        17,
+        14,
+        8,
+        0x202622
+    );
+
+
+    createShop(
+        "HOME COMFORTS",
+        28,
+        28,
+        17,
+        14,
+        8,
+        0x22291f
+    );
+
+
+    createShop(
+        "ELECTRONICS MALL",
+        0,
+        -65,
+        25,
+        15,
+        11,
+        0x15252b
+    );
+
+
+    createShop(
+        "FOOD COURT",
+        0,
+        65,
+        25,
+        15,
+        9,
+        0x29251b
+    );
+
+
+    /* =====================================================
+       BANK
+    ===================================================== */
+
+    const bank =
+        createShop(
+            "BANK",
+            0,
+            -35,
+            18,
+            12,
+            12,
+            0x172238
+        );
+
+
+    /* =====================================================
+       EVENT CENTER
+    ===================================================== */
+
+    const eventGroup =
+        new THREE.Group();
+
+
+    eventGroup.name =
+        "EVENT CENTER";
+
+
+    const eventBuilding =
+        new THREE.Mesh(
+
+            new THREE.CylinderGeometry(
+                13,
+                13,
+                7,
+                48
+            ),
+
+            buildingMaterial(
+                0x242044
+            )
+
+        );
+
+
+    eventBuilding.position.y =
+        3.5;
+
+
+    eventBuilding.castShadow =
+        true;
+
+
+    eventGroup.add(
+        eventBuilding
+    );
+
+
+    const eventRoof =
+        new THREE.Mesh(
+
+            new THREE.CylinderGeometry(
+                13,
+                4,
+                6,
+                48
+            ),
+
+            new THREE.MeshStandardMaterial({
+
+                color:
+                    0x3a2c73,
+
+                emissive:
+                    0x281d68,
+
+                emissiveIntensity:
+                    0.5
+
+            })
+
+        );
+
+
+    eventRoof.position.y =
+        9;
+
+
+    eventGroup.add(
+        eventRoof
+    );
+
+
+    eventGroup.position.set(
+        62,
+        0,
+        28
+    );
+
+
+    scene.add(
+        eventGroup
+    );
+
+
+    /* =====================================================
+       BILLBOARD
+    ===================================================== */
+
+    const billboard =
+        new THREE.Group();
+
+
+    billboard.name =
+        "BILLBOARD AREA";
+
+
+    const billboardBoard =
+        new THREE.Mesh(
+
+            new THREE.BoxGeometry(
+                12,
+                7,
+                0.6
+            ),
+
+            new THREE.MeshStandardMaterial({
+
+                color:
+                    0x4a125c,
+
+                emissive:
+                    0x320d42,
+
+                emissiveIntensity:
+                    0.5
+
+            })
+
+        );
+
+
+    billboardBoard.position.y =
+        7;
+
+
+    billboard.add(
+        billboardBoard
+    );
+
+
+    const billboardTexture =
+        createTextTexture(
+            "ADVERTISE YOUR BUSINESS"
+        );
+
+
+    const billboardScreen =
+        new THREE.Mesh(
+
+            new THREE.PlaneGeometry(
+                11,
+                5.5
+            ),
+
+            new THREE.MeshBasicMaterial({
+                map:
+                    billboardTexture
+            })
+
+        );
+
+
+    billboardScreen.position.set(
+        0,
+        7,
+        0.35
+    );
+
+
+    billboard.add(
+        billboardScreen
+    );
+
+
+    const pole =
+        new THREE.Mesh(
+
+            new THREE.CylinderGeometry(
+                0.5,
+                0.7,
+                7,
+                12
+            ),
+
+            buildingMaterial(
+                0x333333
+            )
+
+        );
+
+
+    pole.position.y =
+        3.5;
+
+
+    billboard.add(
+        pole
+    );
+
+
+    billboard.position.set(
+        68,
+        0,
+        -30
+    );
+
+
+    scene.add(
+        billboard
     );
 
 
@@ -490,72 +1260,133 @@ if (!container) {
        MARKET PLAZA
     ===================================================== */
 
-    const plazaGeometry =
-        new THREE.CylinderGeometry(
-            9,
-            9,
-            0.4,
-            48
-        );
-
-    const plazaMaterial =
-        new THREE.MeshStandardMaterial({
-            color: 0x123c20,
-            emissive: 0x0b351a,
-            emissiveIntensity: 0.4
-        });
-
     const plaza =
         new THREE.Mesh(
-            plazaGeometry,
-            plazaMaterial
+
+            new THREE.CylinderGeometry(
+                11,
+                11,
+                0.5,
+                48
+            ),
+
+            new THREE.MeshStandardMaterial({
+
+                color:
+                    0x123c20,
+
+                emissive:
+                    0x0b351a,
+
+                emissiveIntensity:
+                    0.6
+
+            })
+
         );
 
+
     plaza.position.y =
-        0.25;
+        0.3;
 
-    plaza.receiveShadow = true;
 
-    scene.add(plaza);
+    plaza.receiveShadow =
+        true;
+
+
+    scene.add(
+        plaza
+    );
 
 
     /* =====================================================
-       PLAZA CENTER
+       PLAZA FOUNTAIN
     ===================================================== */
 
-    const centerGeometry =
-        new THREE.CylinderGeometry(
-            4,
-            4,
-            2,
-            32
-        );
-
-    const centerMaterial =
-        new THREE.MeshStandardMaterial({
-            color: 0x28e36b,
-            emissive: 0x28e36b,
-            emissiveIntensity: 0.5
-        });
-
-    const center =
+    const fountainBase =
         new THREE.Mesh(
-            centerGeometry,
-            centerMaterial
+
+            new THREE.CylinderGeometry(
+                5,
+                5,
+                0.8,
+                32
+            ),
+
+            new THREE.MeshStandardMaterial({
+
+                color:
+                    0x26382c,
+
+                metalness:
+                    0.4,
+
+                roughness:
+                    0.25
+
+            })
+
         );
 
-    center.position.y = 1;
 
-    center.castShadow = true;
+    fountainBase.position.y =
+        0.7;
 
-    scene.add(center);
+
+    scene.add(
+        fountainBase
+    );
+
+
+    const fountainWater =
+        new THREE.Mesh(
+
+            new THREE.CylinderGeometry(
+                3.8,
+                3.8,
+                0.2,
+                32
+            ),
+
+            new THREE.MeshStandardMaterial({
+
+                color:
+                    0x1b9e5a,
+
+                emissive:
+                    0x0d5f32,
+
+                emissiveIntensity:
+                    0.5,
+
+                transparent:
+                    true,
+
+                opacity:
+                    0.8
+
+            })
+
+        );
+
+
+    fountainWater.position.y =
+        1.15;
+
+
+    scene.add(
+        fountainWater
+    );
 
 
     /* =====================================================
        TREES
     ===================================================== */
 
-    function createTree(x, z) {
+    function createTree(
+        x,
+        z
+    ) {
 
         const group =
             new THREE.Group();
@@ -563,43 +1394,63 @@ if (!container) {
 
         const trunk =
             new THREE.Mesh(
+
                 new THREE.CylinderGeometry(
-                    0.35,
-                    0.45,
-                    2.5,
+                    0.4,
+                    0.55,
+                    3,
                     8
                 ),
-                new THREE.MeshStandardMaterial({
-                    color: 0x55351f
-                })
+
+                buildingMaterial(
+                    0x55351f
+                )
+
             );
 
+
         trunk.position.y =
-            1.25;
+            1.5;
 
-        trunk.castShadow = true;
 
-        group.add(trunk);
+        group.add(
+            trunk
+        );
 
 
         const leaves =
             new THREE.Mesh(
+
                 new THREE.SphereGeometry(
-                    2.1,
-                    12,
-                    12
+                    2.3,
+                    16,
+                    16
                 ),
+
                 new THREE.MeshStandardMaterial({
-                    color: 0x16813b
+
+                    color:
+                        0x16813b,
+
+                    roughness:
+                        0.8
+
                 })
+
             );
 
+
         leaves.position.y =
-            3.3;
+            3.8;
 
-        leaves.castShadow = true;
 
-        group.add(leaves);
+        leaves.castShadow =
+            true;
+
+
+        group.add(
+            leaves
+        );
 
 
         group.position.set(
@@ -608,31 +1459,49 @@ if (!container) {
             z
         );
 
-        scene.add(group);
+
+        scene.add(
+            group
+        );
+
     }
 
 
     const treePositions = [
-        [-12, -15],
-        [12, -15],
-        [-15, 15],
-        [15, 15],
-        [-42, -12],
-        [42, -12],
-        [-42, 12],
-        [42, 12],
-        [-12, -42],
-        [12, -42],
-        [-12, 42],
-        [12, 42]
+
+        [-15, -16],
+        [15, -16],
+
+        [-16, 16],
+        [16, 16],
+
+        [-55, -15],
+        [55, -15],
+
+        [-55, 15],
+        [55, 15],
+
+        [-15, -52],
+        [15, -52],
+
+        [-15, 52],
+        [15, 52],
+
+        [-60, 50],
+        [60, -50]
+
     ];
 
+
     treePositions.forEach(
-        position =>
+        position => {
+
             createTree(
                 position[0],
                 position[1]
-            )
+            );
+
+        }
     );
 
 
@@ -645,83 +1514,130 @@ if (!container) {
         z
     ) {
 
+        const group =
+            new THREE.Group();
+
+
         const pole =
             new THREE.Mesh(
+
                 new THREE.CylinderGeometry(
                     0.12,
-                    0.15,
+                    0.18,
                     5,
                     8
                 ),
-                new THREE.MeshStandardMaterial({
-                    color: 0x4a554e
-                })
+
+                buildingMaterial(
+                    0x4a554e
+                )
+
             );
 
-        pole.position.set(
-            x,
-            2.5,
-            z
+
+        pole.position.y =
+            2.5;
+
+
+        group.add(
+            pole
         );
 
-        scene.add(pole);
+
+        const lamp =
+            new THREE.Mesh(
+
+                new THREE.SphereGeometry(
+                    0.35,
+                    12,
+                    12
+                ),
+
+                new THREE.MeshStandardMaterial({
+
+                    color:
+                        0xaaffc2,
+
+                    emissive:
+                        0x28e36b,
+
+                    emissiveIntensity:
+                        2
+
+                })
+
+            );
+
+
+        lamp.position.y =
+            5.1;
+
+
+        group.add(
+            lamp
+        );
 
 
         const light =
             new THREE.PointLight(
-                0x8affb0,
-                2,
-                12
+                0x63ff9b,
+                1.5,
+                15
             );
 
-        light.position.set(
+
+        light.position.y =
+            5.1;
+
+
+        group.add(
+            light
+        );
+
+
+        group.position.set(
             x,
-            5.2,
+            0,
             z
         );
 
-        scene.add(light);
 
-
-        const bulb =
-            new THREE.Mesh(
-                new THREE.SphereGeometry(
-                    0.3,
-                    12,
-                    12
-                ),
-                new THREE.MeshStandardMaterial({
-                    color: 0x9affb8,
-                    emissive: 0x28e36b,
-                    emissiveIntensity: 1
-                })
-            );
-
-        bulb.position.set(
-            x,
-            5.2,
-            z
+        scene.add(
+            group
         );
 
-        scene.add(bulb);
     }
 
 
     [
+
         [-7, -12],
         [7, -12],
+
         [-7, 12],
         [7, 12],
+
         [-12, -7],
         [12, -7],
+
         [-12, 7],
-        [12, 7]
+        [12, 7],
+
+        [-38, -12],
+        [38, -12],
+
+        [-38, 12],
+        [38, 12]
+
     ].forEach(
-        p =>
+        position => {
+
             createStreetLight(
-                p[0],
-                p[1]
-            )
+                position[0],
+                position[1]
+            );
+
+        }
     );
 
 
@@ -732,80 +1648,193 @@ if (!container) {
     const raycaster =
         new THREE.Raycaster();
 
-    const mouse =
+
+    const pointer =
         new THREE.Vector2();
 
+
     renderer.domElement.addEventListener(
-        "pointerdown",
+        "click",
         event => {
 
             const rect =
                 renderer.domElement
                     .getBoundingClientRect();
 
-            mouse.x =
-                (
-                    (event.clientX - rect.left)
-                    / rect.width
-                ) * 2 - 1;
 
-            mouse.y =
+            pointer.x =
+                (
+                    event.clientX -
+                    rect.left
+                ) /
+                rect.width *
+                2 -
+                1;
+
+
+            pointer.y =
                 -(
-                    (event.clientY - rect.top)
-                    / rect.height
-                ) * 2 + 1;
+                    (
+                        event.clientY -
+                        rect.top
+                    ) /
+                    rect.height
+                ) *
+                2 +
+                1;
+
 
             raycaster.setFromCamera(
-                mouse,
+                pointer,
                 camera
             );
 
-            const objects =
+
+            const hits =
                 raycaster.intersectObjects(
-                    scene.children,
+                    shopObjects,
                     true
                 );
 
+
             if (
-                objects.length === 0
+                hits.length === 0
             ) {
+
                 return;
+
             }
 
-            let selected =
-                objects[0].object;
+
+            let object =
+                hits[0].object;
+
 
             while (
-                selected.parent &&
-                selected.parent !== scene
+                object.parent &&
+                object.parent !== scene
             ) {
-                selected =
-                    selected.parent;
+
+                object =
+                    object.parent;
+
             }
 
+
             if (
-                selected.name
+                object.name
             ) {
 
                 console.log(
-                    "Kasumet Shop:",
-                    selected.name
+                    "Shop selected:",
+                    object.name
                 );
 
+
                 window.dispatchEvent(
+
                     new CustomEvent(
                         "kasumetShopSelected",
                         {
+
                             detail: {
+
                                 shop:
-                                    selected.name
+                                    object.name
+
                             }
+
                         }
                     )
+
                 );
+
             }
+
         }
     );
+
+
+    /* =====================================================
+       ZOOM BUTTONS
+    ===================================================== */
+
+    const zoomIn =
+        document.getElementById(
+            "zoomIn"
+        );
+
+
+    const zoomOut =
+        document.getElementById(
+            "zoomOut"
+        );
+
+
+    const reset =
+        document.getElementById(
+            "resetMarket"
+        );
+
+
+    if (zoomIn) {
+
+        zoomIn.addEventListener(
+            "click",
+            () => {
+
+                camera.position.multiplyScalar(
+                    0.85
+                );
+
+            }
+        );
+
+    }
+
+
+    if (zoomOut) {
+
+        zoomOut.addEventListener(
+            "click",
+            () => {
+
+                camera.position.multiplyScalar(
+                    1.18
+                );
+
+            }
+        );
+
+    }
+
+
+    if (reset) {
+
+        reset.addEventListener(
+            "click",
+            () => {
+
+                camera.position.set(
+                    48,
+                    42,
+                    55
+                );
+
+
+                controls.target.set(
+                    0,
+                    0,
+                    0
+                );
+
+
+                controls.update();
+
+            }
+        );
+
+    }
 
 
     /* =====================================================
@@ -817,19 +1846,28 @@ if (!container) {
         const width =
             container.clientWidth;
 
+
         const height =
-            container.clientHeight;
+            Math.max(
+                container.clientHeight,
+                500
+            );
+
 
         camera.aspect =
             width / height;
 
+
         camera.updateProjectionMatrix();
+
 
         renderer.setSize(
             width,
             height
         );
+
     }
+
 
     window.addEventListener(
         "resize",
@@ -841,32 +1879,63 @@ if (!container) {
        ANIMATION
     ===================================================== */
 
+    const clock =
+        new THREE.Clock();
+
+
     function animate() {
 
         requestAnimationFrame(
             animate
         );
 
+
+        const time =
+            clock.getElapsedTime();
+
+
         controls.update();
 
-        plaza.rotation.y +=
-            0.001;
 
-        center.rotation.y +=
-            0.004;
+        /* fountain animation */
+
+        fountainWater.scale.y =
+            1 +
+            Math.sin(
+                time * 2
+            ) *
+            0.03;
+
+
+        /* plaza glow */
+
+        greenLight.intensity =
+            3.5 +
+            Math.sin(
+                time * 1.5
+            ) *
+            0.5;
+
 
         renderer.render(
             scene,
             camera
         );
+
     }
 
+
+    /* =====================================================
+       START
+    ===================================================== */
 
     resize();
 
     animate();
 
+
     console.log(
         "KASUMET 3D MARKET READY"
     );
-          }
+
+}
