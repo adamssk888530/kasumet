@@ -12,7 +12,10 @@
 
     <title>KASUMET — Virtual Market</title>
 
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
 
 </head>
 
@@ -20,9 +23,9 @@
 <body>
 
 
-    <!-- =========================
+    <!-- =========================================
          HEADER
-    ========================== -->
+    ========================================== -->
 
     <header class="header">
 
@@ -37,28 +40,51 @@
         </div>
 
 
+        <div class="market-search">
+
+            <input
+                type="search"
+                id="marketSearch"
+                placeholder="Search shops, products, cars..."
+            >
+
+            <button
+                type="button"
+                id="searchButton"
+            >
+                🔍
+            </button>
+
+        </div>
+
+
         <nav class="navigation">
 
             <a href="index.html">
                 Home
             </a>
 
-            <a href="#">
-                Explore Market
+            <a href="#market">
+                Explore
             </a>
 
-            <a href="#">
+            <a href="#categories">
                 Categories
             </a>
 
-            <a href="#">
+            <a href="#deals">
                 Deals
             </a>
 
-            <!-- REAL LOGIN LINK -->
-
             <a href="login.html">
                 Login
+            </a>
+
+            <a
+                href="register.html"
+                class="nav-register"
+            >
+                Register
             </a>
 
         </nav>
@@ -67,76 +93,449 @@
 
 
 
-    <!-- =========================
-         MAIN
-    ========================== -->
+    <!-- =========================================
+         HERO
+    ========================================== -->
 
     <main>
 
 
-        <!-- =========================
-             HERO SECTION
-        ========================== -->
-
-        <section class="hero">
+        <section class="market-hero">
 
             <div class="hero-content">
 
-
-                <p class="welcome">
-                    WELCOME TO
-                </p>
+                <span class="hero-badge">
+                    🌍 YOUR DIGITAL MARKET
+                </span>
 
 
                 <h1>
-                    KASUMET
+                    Welcome to
+                    <strong>KASUMET</strong>
                 </h1>
 
 
-                <p class="subtitle">
-                    Virtual Market
-                </p>
+                <p>
 
-
-                <p class="description">
-
-                    Discover shops, products and
-                    businesses in one virtual marketplace.
+                    Explore shops, discover products,
+                    compare prices and connect with
+                    businesses in our virtual market.
 
                 </p>
 
 
-
-                <!-- =========================
-                     MAIN ACCOUNT BUTTONS
-                ========================== -->
-
-                <div class="buttons">
-
-
-                    <!-- BUYER REGISTER -->
+                <div class="hero-actions">
 
                     <a
-                        href="register.html"
-                        class="register-link"
-                        id="buyerRegisterBtn"
+                        href="#market"
+                        class="primary-button"
                     >
-                        Register as Buyer
+                        🏙️ Enter Market
                     </a>
 
 
-
-                    <!-- SELLER REGISTER -->
-
-                    <button
-                        id="sellerRegisterBtn"
-                        type="button"
+                    <a
+                        href="#categories"
+                        class="secondary-button"
                     >
-                        Register as Seller
-                    </button>
-
+                        Explore Categories
+                    </a>
 
                 </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             MARKET
+        ========================================== -->
+
+        <section
+            class="market-section"
+            id="market"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span>
+                        EXPLORE
+                    </span>
+
+                    <h2>
+                        Virtual Market
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="map-button"
+                    id="mapButton"
+                >
+                    🗺️ View Market Map
+                </button>
+
+            </div>
+
+
+
+            <!-- MARKET CITY -->
+
+            <div class="virtual-market">
+
+
+                <div class="market-label">
+
+                    <strong>
+                        KASUMET MARKET
+                    </strong>
+
+                    <small>
+                        Explore businesses and shops
+                    </small>
+
+                </div>
+
+
+
+                <!-- ROADS -->
+
+                <div class="market-road road-horizontal"></div>
+
+                <div class="market-road road-vertical"></div>
+
+
+
+                <!-- CENTRAL PLAZA -->
+
+                <div class="market-plaza">
+
+                    <div class="plaza-circle">
+
+                        <span>
+                            🏙️
+                        </span>
+
+                        <small>
+                            MARKET PLAZA
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SHOP 1 -->
+
+                <button
+                    type="button"
+                    class="market-building building-one"
+                    data-shop="Gadget World"
+                >
+
+                    <span>
+                        📱
+                    </span>
+
+                    <strong>
+                        Gadget World
+                    </strong>
+
+                    <small>
+                        🟢 Available
+                    </small>
+
+                </button>
+
+
+
+                <!-- SHOP 2 -->
+
+                <button
+                    type="button"
+                    class="market-building building-two"
+                    data-shop="Fashion House"
+                >
+
+                    <span>
+                        👗
+                    </span>
+
+                    <strong>
+                        Fashion House
+                    </strong>
+
+                    <small>
+                        🟢 Available
+                    </small>
+
+                </button>
+
+
+
+                <!-- SHOP 3 -->
+
+                <button
+                    type="button"
+                    class="market-building building-three"
+                    data-shop="Car Empire"
+                >
+
+                    <span>
+                        🚗
+                    </span>
+
+                    <strong>
+                        Car Empire
+                    </strong>
+
+                    <small>
+                        🟢 Available
+                    </small>
+
+                </button>
+
+
+
+                <!-- SHOP 4 -->
+
+                <button
+                    type="button"
+                    class="market-building building-four"
+                    data-shop="Home Comforts"
+                >
+
+                    <span>
+                        🛋️
+                    </span>
+
+                    <strong>
+                        Home Comforts
+                    </strong>
+
+                    <small>
+                        🟢 Available
+                    </small>
+
+                </button>
+
+
+
+                <!-- SHOP 5 -->
+
+                <button
+                    type="button"
+                    class="market-building building-five"
+                    data-shop="Food Court"
+                >
+
+                    <span>
+                        🍔
+                    </span>
+
+                    <strong>
+                        Food Court
+                    </strong>
+
+                    <small>
+                        🟢 Available
+                    </small>
+
+                </button>
+
+
+
+                <!-- SHOP 6 -->
+
+                <button
+                    type="button"
+                    class="market-building building-six"
+                    data-shop="Electronics Mall"
+                >
+
+                    <span>
+                        💻
+                    </span>
+
+                    <strong>
+                        Electronics Mall
+                    </strong>
+
+                    <small>
+                        🟢 Available
+                    </small>
+
+                </button>
+
+
+
+                <!-- BILLBOARD -->
+
+                <div class="market-billboard">
+
+                    <span>
+                        🔥
+                    </span>
+
+                    <strong>
+                        TODAY'S DEALS
+                    </strong>
+
+                    <small>
+                        Shop & Save
+                    </small>
+
+                </div>
+
+
+
+                <!-- MAP CONTROLS -->
+
+                <div class="map-controls">
+
+                    <button
+                        type="button"
+                        id="zoomIn"
+                    >
+                        +
+                    </button>
+
+                    <button
+                        type="button"
+                        id="zoomOut"
+                    >
+                        −
+                    </button>
+
+                    <button
+                        type="button"
+                        id="resetMap"
+                    >
+                        ⟳
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             CATEGORIES
+        ========================================== -->
+
+        <section
+            class="categories-section"
+            id="categories"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span>
+                        DISCOVER
+                    </span>
+
+                    <h2>
+                        Shop by Category
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="category-grid">
+
+
+                <button
+                    class="category-card"
+                    data-category="Electronics"
+                >
+                    <span>📱</span>
+                    <strong>Electronics</strong>
+                    <small>128 Shops</small>
+                </button>
+
+
+                <button
+                    class="category-card"
+                    data-category="Fashion"
+                >
+                    <span>👗</span>
+                    <strong>Fashion</strong>
+                    <small>256 Shops</small>
+                </button>
+
+
+                <button
+                    class="category-card"
+                    data-category="Cars"
+                >
+                    <span>🚗</span>
+                    <strong>Cars</strong>
+                    <small>73 Showrooms</small>
+                </button>
+
+
+                <button
+                    class="category-card"
+                    data-category="Furniture"
+                >
+                    <span>🛋️</span>
+                    <strong>Furniture</strong>
+                    <small>95 Shops</small>
+                </button>
+
+
+                <button
+                    class="category-card"
+                    data-category="Food"
+                >
+                    <span>🍔</span>
+                    <strong>Food & Drinks</strong>
+                    <small>65 Shops</small>
+                </button>
+
+
+                <button
+                    class="category-card"
+                    data-category="Beauty"
+                >
+                    <span>💄</span>
+                    <strong>Beauty</strong>
+                    <small>82 Shops</small>
+                </button>
+
+
+                <button
+                    class="category-card"
+                    data-category="Services"
+                >
+                    <span>🔧</span>
+                    <strong>Services</strong>
+                    <small>47 Businesses</small>
+                </button>
+
+
+                <button
+                    class="category-card"
+                    data-category="Offices"
+                >
+                    <span>🏢</span>
+                    <strong>Offices</strong>
+                    <small>39 Spaces</small>
+                </button>
 
 
             </div>
@@ -145,106 +544,471 @@
 
 
 
-        <!-- =========================
-             ACCOUNT SECTION
-        ========================== -->
+        <!-- =========================================
+             TODAY'S DEALS
+        ========================================== -->
 
-        <section class="account-section">
+        <section
+            class="deals-section"
+            id="deals"
+        >
 
+            <div class="section-heading">
 
-            <h2>
-                Join Kasumet
-            </h2>
+                <div>
 
+                    <span>
+                        HOT RIGHT NOW
+                    </span>
 
-            <p>
-                Choose how you want to use Kasumet.
-            </p>
-
-
-
-            <div class="account-cards">
-
-
-                <!-- =========================
-                     BUYER CARD
-                ========================== -->
-
-                <div class="account-card">
-
-
-                    <div class="icon">
-                        👤
-                    </div>
-
-
-                    <h3>
-                        Buyer
-                    </h3>
-
-
-                    <p>
-
-                        Find shops, discover products
-                        and connect with sellers.
-
-                    </p>
-
-
-                    <!-- BUYER ACCOUNT LINK -->
-
-                    <a
-                        href="register.html"
-                        class="register-link"
-                    >
-                        Create Buyer Account
-                    </a>
-
+                    <h2>
+                        Today's Deals
+                    </h2>
 
                 </div>
 
 
+                <a href="#">
+                    View All →
+                </a>
 
-                <!-- =========================
-                     SELLER CARD
-                ========================== -->
-
-                <div class="account-card">
+            </div>
 
 
-                    <div class="icon">
-                        🏪
+            <div class="product-grid">
+
+
+                <article class="product-card">
+
+                    <div class="product-image">
+                        📱
                     </div>
 
+                    <div class="product-info">
 
-                    <h3>
-                        Seller
-                    </h3>
+                        <span class="product-category">
+                            Electronics
+                        </span>
+
+                        <h3>
+                            iPhone 15 Pro Max
+                        </h3>
+
+                        <strong>
+                            ₦850,000
+                        </strong>
+
+                        <small>
+                            🏪 Gadget World
+                        </small>
+
+                        <button
+                            class="buy-button"
+                            data-product="iPhone 15 Pro Max"
+                        >
+                            🛒 Buy
+                        </button>
+
+                    </div>
+
+                </article>
 
 
-                    <p>
 
-                        Create your shop, list products
-                        and reach customers.
+                <article class="product-card">
 
-                    </p>
+                    <div class="product-image">
+                        👟
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Fashion
+                        </span>
+
+                        <h3>
+                            Premium Sneakers
+                        </h3>
+
+                        <strong>
+                            ₦28,000
+                        </strong>
+
+                        <small>
+                            🏪 Fashion House
+                        </small>
+
+                        <button
+                            class="buy-button"
+                            data-product="Premium Sneakers"
+                        >
+                            🛒 Buy
+                        </button>
+
+                    </div>
+
+                </article>
 
 
-                    <!-- SELLER BUTTON -->
 
-                    <button
-                        id="sellerRegisterBtnCard"
-                        type="button"
-                    >
-                        Become a Seller
-                    </button>
+                <article class="product-card">
+
+                    <div class="product-image">
+                        💻
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Computers
+                        </span>
+
+                        <h3>
+                            HP Pavilion Laptop
+                        </h3>
+
+                        <strong>
+                            ₦480,000
+                        </strong>
+
+                        <small>
+                            🏪 Tech Hub
+                        </small>
+
+                        <button
+                            class="buy-button"
+                            data-product="HP Pavilion Laptop"
+                        >
+                            🛒 Buy
+                        </button>
+
+                    </div>
+
+                </article>
 
 
-                </div>
+
+                <article class="product-card">
+
+                    <div class="product-image">
+                        🛋️
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Furniture
+                        </span>
+
+                        <h3>
+                            Modern Sofa
+                        </h3>
+
+                        <strong>
+                            ₦180,000
+                        </strong>
+
+                        <small>
+                            🏪 Home Comforts
+                        </small>
+
+                        <button
+                            class="buy-button"
+                            data-product="Modern Sofa"
+                        >
+                            🛒 Buy
+                        </button>
+
+                    </div>
+
+                </article>
 
 
             </div>
 
+        </section>
+
+
+
+        <!-- =========================================
+             POPULAR SHOPS
+        ========================================== -->
+
+        <section class="shops-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span>
+                        TRUSTED BUSINESSES
+                    </span>
+
+                    <h2>
+                        Popular Shops
+                    </h2>
+
+                </div>
+
+
+                <a href="#">
+                    View All →
+                </a>
+
+            </div>
+
+
+            <div class="shop-grid">
+
+
+                <article
+                    class="shop-card"
+                    data-shop="Gadget World"
+                >
+
+                    <div class="shop-cover">
+                        📱
+                    </div>
+
+                    <div class="shop-info">
+
+                        <div class="shop-title">
+
+                            <h3>
+                                Gadget World
+                            </h3>
+
+                            <span class="verified">
+                                ✓ Verified
+                            </span>
+
+                        </div>
+
+                        <p>
+                            Phones, laptops and accessories
+                        </p>
+
+                        <div class="shop-meta">
+
+                            <span>
+                                ⭐ 4.8
+                            </span>
+
+                            <span>
+                                🟢 Open
+                            </span>
+
+                        </div>
+
+                        <button
+                            class="visit-shop"
+                            data-shop="Gadget World"
+                        >
+                            Enter Shop →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <article
+                    class="shop-card"
+                    data-shop="Fashion House"
+                >
+
+                    <div class="shop-cover">
+                        👗
+                    </div>
+
+                    <div class="shop-info">
+
+                        <div class="shop-title">
+
+                            <h3>
+                                Fashion House
+                            </h3>
+
+                            <span class="verified">
+                                ✓ Verified
+                            </span>
+
+                        </div>
+
+                        <p>
+                            Fashion, shoes and accessories
+                        </p>
+
+                        <div class="shop-meta">
+
+                            <span>
+                                ⭐ 4.7
+                            </span>
+
+                            <span>
+                                🟢 Open
+                            </span>
+
+                        </div>
+
+                        <button
+                            class="visit-shop"
+                            data-shop="Fashion House"
+                        >
+                            Enter Shop →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <article
+                    class="shop-card"
+                    data-shop="Car Empire"
+                >
+
+                    <div class="shop-cover">
+                        🚗
+                    </div>
+
+                    <div class="shop-info">
+
+                        <div class="shop-title">
+
+                            <h3>
+                                Car Empire
+                            </h3>
+
+                            <span class="verified">
+                                ✓ Verified
+                            </span>
+
+                        </div>
+
+                        <p>
+                            Cars and automotive services
+                        </p>
+
+                        <div class="shop-meta">
+
+                            <span>
+                                ⭐ 4.9
+                            </span>
+
+                            <span>
+                                🟢 Open
+                            </span>
+
+                        </div>
+
+                        <button
+                            class="visit-shop"
+                            data-shop="Car Empire"
+                        >
+                            Enter Shop →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+
+                <article
+                    class="shop-card"
+                    data-shop="Home Comforts"
+                >
+
+                    <div class="shop-cover">
+                        🛋️
+                    </div>
+
+                    <div class="shop-info">
+
+                        <div class="shop-title">
+
+                            <h3>
+                                Home Comforts
+                            </h3>
+
+                            <span class="verified">
+                                ✓ Verified
+                            </span>
+
+                        </div>
+
+                        <p>
+                            Furniture and home decoration
+                        </p>
+
+                        <div class="shop-meta">
+
+                            <span>
+                                ⭐ 4.6
+                            </span>
+
+                            <span>
+                                🟢 Open
+                            </span>
+
+                        </div>
+
+                        <button
+                            class="visit-shop"
+                            data-shop="Home Comforts"
+                        >
+                            Enter Shop →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             SELLER CTA
+        ========================================== -->
+
+        <section class="seller-cta">
+
+            <div>
+
+                <span>
+                    BUSINESS OWNERS
+                </span>
+
+                <h2>
+                    Open Your Shop on Kasumet
+                </h2>
+
+                <p>
+
+                    Create your verified business profile,
+                    rent a virtual shop and reach customers
+                    across the Kasumet market.
+
+                </p>
+
+            </div>
+
+
+            <a
+                href="#"
+                id="sellerStartButton"
+                class="primary-button"
+            >
+                🏪 Become a Seller
+            </a>
 
         </section>
 
@@ -253,28 +1017,242 @@
 
 
 
-    <!-- =========================
+    <!-- =========================================
          FOOTER
-    ========================== -->
+    ========================================== -->
 
-    <footer>
+    <footer class="footer">
+
+        <div class="footer-brand">
+
+            <strong>
+                KASUMET
+            </strong>
+
+            <p>
+                Virtual Market
+            </p>
+
+            <small>
+                Your Market. Your Shop. Your Customers.
+            </small>
+
+        </div>
 
 
-        <p>
-            © 2026 KASUMET — Virtual Market
-        </p>
+        <div class="footer-links">
 
+            <div>
+
+                <h4>
+                    Market
+                </h4>
+
+                <a href="#market">
+                    Explore Market
+                </a>
+
+                <a href="#categories">
+                    Categories
+                </a>
+
+                <a href="#deals">
+                    Deals
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Account
+                </h4>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="register.html">
+                    Register
+                </a>
+
+                <a href="#">
+                    Help
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Business
+                </h4>
+
+                <a href="#">
+                    Become a Seller
+                </a>
+
+                <a href="#">
+                    Seller Rules
+                </a>
+
+                <a href="#">
+                    Verification
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 KASUMET. All rights reserved.
+            </p>
+
+        </div>
 
     </footer>
 
 
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
+    <!-- =========================================
+         SHOP MODAL
+    ========================================== -->
+
+    <div
+        class="modal"
+        id="shopModal"
+    >
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                id="closeShopModal"
+            >
+                ✕
+            </button>
+
+
+            <div class="modal-icon">
+                🏪
+            </div>
+
+
+            <span class="verified">
+                ✓ Verified Business
+            </span>
+
+
+            <h2 id="modalShopName">
+                Shop
+            </h2>
+
+
+            <p>
+                This shop is available in
+                the Kasumet virtual market.
+            </p>
+
+
+            <div class="modal-status">
+
+                <span>
+                    🟢 Shop Available
+                </span>
+
+                <span>
+                    ⭐ 4.8
+                </span>
+
+            </div>
+
+
+            <button
+                class="primary-button"
+                id="enterShopModal"
+            >
+                Enter Shop
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         AUTH REQUIRED MODAL
+    ========================================== -->
+
+    <div
+        class="modal"
+        id="authModal"
+    >
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                id="closeAuthModal"
+            >
+                ✕
+            </button>
+
+
+            <div class="modal-icon">
+                🔐
+            </div>
+
+
+            <h2>
+                Register to Continue
+            </h2>
+
+
+            <p>
+
+                You can explore Kasumet and enter shops
+                as a guest.
+
+                <br><br>
+
+                To buy products, add items to cart
+                or checkout, you need a free account.
+
+            </p>
+
+
+            <div class="modal-actions">
+
+                <a
+                    href="register.html"
+                    class="primary-button"
+                >
+                    Create Account
+                </a>
+
+
+                <a
+                    href="login.html"
+                    class="secondary-button"
+                >
+                    Login
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
 
     <script src="js/app.js"></script>
-
 
 </body>
 
